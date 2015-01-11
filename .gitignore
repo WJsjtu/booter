@@ -1,0 +1,5 @@
+.suo
+Booter/bin
+Booter/obj
+Booter/*.csproj
+*.suo
