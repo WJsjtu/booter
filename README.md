@@ -117,7 +117,7 @@ HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\PLAP Providers
 当然这些方法，我都是从http://msdn.microsoft.com/en-us/library/windows/desktop/aa374737(v=vs.85).aspx
 中知道的。
 
-11.	Scheduled Tasks
+###11.	Scheduled Tasks
 这些都是C:\Windows\Tasks下的job文件的信息，所以只要解析了这些文件就行了。当然我说的轻松，做的也轻松……。在CodeProject上找到了
 http://www.codeproject.com/Articles/2407/A-New-Task-Scheduler-Class-Library-for-NET
 ，这里它是导出到dll库的，我懒得拖一个文件在外面就将源码复制到了我的程序中去（就是那个Task文件夹）。
