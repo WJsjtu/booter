@@ -43,7 +43,11 @@ HKEY_CURRENT_USER\Software\Microsoft\Internet Explorer\UrlSearchHooks的键所�
 HKLM\System\CurrentControlSet\Control\Session Manager\KnownDlls下所有dll文件，默认路径system文件夹，如果是64位系统那么还要包括（systemx86文件夹，即SysWOW64文件夹）。
 
 ###7.	Winsock Providers
-位置在HKLM\System\CurrentControlSet\Services\WinSock2\Parameters\ Protocol_Catalog9下，但是内容在PackedCatalogItem键所对应的之当中。对于其功能的了解还是最初在http://msdn.microsoft.com/en-us/library/windows/desktop/aa374737(v=vs.85).aspx上得到的，后来，我为了知道如何读取其值的具体内容，通过谷歌的查找找到了http://read.pudn.com/downloads3/sourcecode/windows/network/11373/winsock2/dll/winsock2/dcatitem.cpp__.htm这篇文章，其实就是winsock2的源码……，里面读到了这么一个数据结构（C++）
+位置在HKLM\System\CurrentControlSet\Services\WinSock2\Parameters\ Protocol_Catalog9下，但是内容在PackedCatalogItem键所对应的之当中。对于其功能的了解还是最初在
+http://msdn.microsoft.com/en-us/library/windows/desktop/aa374737(v=vs.85).aspx
+上得到的，后来，我为了知道如何读取其值的具体内容，通过谷歌的查找找到了
+http://read.pudn.com/downloads3/sourcecode/windows/network/11373/winsock2/dll/winsock2/dcatitem.cpp__.htm
+这篇文章，其实就是winsock2的源码……，里面读到了这么一个数据结构（C++）
 ```c
 	// The following typedef is used in packing and unpacking catalog item data for   
 	// reading and writing in the registry.   
@@ -59,7 +63,9 @@ HKLM\System\CurrentControlSet\Control\Session Manager\KnownDlls下所有dll文�
 	        // structure must be strictly flat.   
 	} PACKED_CAT_ITEM;  
 ```
-新建一个C++的工程，测试一下MAX_PATH和WSAPROTOCOL_INFOW，发现MAX_PATH是系统的最大文件名长度（以前写大作业的时候查过，知道是260，但是如何编写C#代码获取还是不知道）。于是查到了http://stackoverflow.com/questions/3406494/what-is-the-maximum-amount-of-characters-or-length-for-a-directory，
+新建一个C++的工程，测试一下MAX_PATH和WSAPROTOCOL_INFOW，发现MAX_PATH是系统的最大文件名长度（以前写大作业的时候查过，知道是260，但是如何编写C#代码获取还是不知道）。于是查到了
+http://stackoverflow.com/questions/3406494/what-is-the-maximum-amount-of-characters-or-length-for-a-directory
+，
 ```c
 // reflection FieldInfo maxPathField = typeof(Path).GetField("MaxPath", 
     BindingFlags.Static | 
@@ -111,5 +117,7 @@ HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\PLAP Providers
 当然这些方法，我都是从http://msdn.microsoft.com/en-us/library/windows/desktop/aa374737(v=vs.85).aspx中知道的。
 
 11.	Scheduled Tasks
-这些都是C:\Windows\Tasks下的job文件的信息，所以只要解析了这些文件就行了。当然我说的轻松，做的也轻松……。在CodeProject上找到了http://www.codeproject.com/Articles/2407/A-New-Task-Scheduler-Class-Library-for-NET，这里它是导出到dll库的，我懒得拖一个文件在外面就将源码复制到了我的程序中去（就是那个Task文件夹）。
+这些都是C:\Windows\Tasks下的job文件的信息，所以只要解析了这些文件就行了。当然我说的轻松，做的也轻松……。在CodeProject上找到了
+http://www.codeproject.com/Articles/2407/A-New-Task-Scheduler-Class-Library-for-NET
+，这里它是导出到dll库的，我懒得拖一个文件在外面就将源码复制到了我的程序中去（就是那个Task文件夹）。
 在TaskSchedulerInterop.cs文件中，通过它对于非托管代码的描述，可以详细的知道里面的数据结构和数据位置。
