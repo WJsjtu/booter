@@ -114,7 +114,8 @@ HKLM\SOFTWARE\Microsoft\Windows\CurrentVersion\Authentication\PLAP Providers
 ###10.	 Network Providers
 在HKLM\SYSTEM\CurrentControlSet\Control\NetworkProvider\Order中找到ProviderOrder所对应的值，他是一个用逗号分隔的一些列Provider的名字。
 每一项的具体信息还要到HKLM\SYSTEM\CurrentControlSet\Services\ + 名字 + \NetworkProvider中ProviderPath和Name键中分别获得路径值和描述。
-当然这些方法，我都是从http://msdn.microsoft.com/en-us/library/windows/desktop/aa374737(v=vs.85).aspx中知道的。
+当然这些方法，我都是从http://msdn.microsoft.com/en-us/library/windows/desktop/aa374737(v=vs.85).aspx
+中知道的。
 
 11.	Scheduled Tasks
 这些都是C:\Windows\Tasks下的job文件的信息，所以只要解析了这些文件就行了。当然我说的轻松，做的也轻松……。在CodeProject上找到了
