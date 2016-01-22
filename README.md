@@ -1,7 +1,7 @@
-# booter
+# windows-startups
 * * *
 ##功能
-####Dectect the boot options on Windows
+####Dectect the startups options on Windows
 ####检测开机启动项
 * * *
 ##实现细节
